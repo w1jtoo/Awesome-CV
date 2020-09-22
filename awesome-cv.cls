@@ -608,6 +608,32 @@
   \end{tabular*}%
 }
 
+% Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
+\newcommand*{\cventryT}[6]{%
+  \vspace{-2.0mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+    \ifempty{#2#3#6}
+      {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+      {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
+      \entrypositionstyle{#1} & \entrydatestyle{#4} \\
+      \entrydatestyle{#5} \\}
+    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#6}}
+  \end{tabular*}%
+}
+
+% Usage: \cventry{<position>}{<title>}{<location>}
+\newcommand*{\cventryproject}[3]{%
+  \vspace{-2.0mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+    \entrytitlestyle{#1} & \entrydatestyle{\href{https://github.com/w1jtoo/#2}{\faGithubSquare\acvHeaderIconSep#2}} \\
+    \descriptionstyle{#3}
+  \end{tabular*}%
+}
+
 % Define an environment for cvsubentry
 \newenvironment{cvsubentries}{%
   \begin{center}
